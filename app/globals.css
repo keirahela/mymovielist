@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --button-background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 346.8 77.2% 49.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 70%;
+    --input: 240 5.9% 90%;
+    --ring: 346.8 77.2% 49.8%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --button-background: 20 0% 15.1%;
+    --foreground: 0 0% 95%;
+    --card: 24 7% 7%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 346.8 77.2% 49.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 240 3.7% 40.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 346.8 77.2% 49.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-primary text-primary-foreground;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: white !important;
+    caret-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+body {
+  margin: auto;
+  padding: auto;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+:root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registration--divider {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.registration--divider div {
+  width: 45%;
+}
+
+.registration--email-input {
+  margin-bottom: 10px;
+}
+
+.text-small {
+  font-size: 0.8rem;
+  color: hsl(var(--border))
+}
+
+.mode-toggle {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: 10%;
+}
+
+.inline-text {
+  display: inline-block;
+  margin: 0px 20px 0px 0px;
+  padding: 0px 23px 0px 0px;
+  font-size: 24px;
+  font-weight: 500;
+  vertical-align: top;
+  line-height: 49px;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.not-found {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 49px;
+  margin: 0px;
+}
+
+.next-error-h1 {
+  border-right: 1px solid rgba(0,0,0,.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  .next-error-h1 {
+    border-right-color: rgba(48, 52, 54, 0.3);
+  }
+}
+
+.align-center {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+    /* So Uh the css stuff here idk what to do help, or we can use stuff like sm:cssStuff  (Smaller preview) */
+}
