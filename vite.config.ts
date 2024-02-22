@@ -6,6 +6,10 @@ import path from "path"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), express('src/server')],
+  // optimizeDeps: {
+  //   noDiscovery: true,
+  //   include: []
+  // },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
