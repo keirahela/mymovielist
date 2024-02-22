@@ -5,8 +5,8 @@ import cors from 'cors'
 
 export const app = express();
 
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cors)
 
 app.get('/api/movie', async (req, res) => {
   const { provider, id } = req.body;
