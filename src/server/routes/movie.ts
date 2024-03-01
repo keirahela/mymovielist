@@ -1,18 +1,20 @@
 import express from 'express'
-import fetch from 'node-fetch'
-import Request from '../interfaces/Request';
+import axios from 'axios';
+import dotenv from 'dotenv'
+dotenv.config()
 
 let router = express.Router()
 
-router.get('/movie', async function(req, res){
-    const { provider, id, type }: Request = req.body;
-  
-    if(!provider || !id || !type) return res.status(400).json({ message: "Bad Request", error: "PRM_NOT_FOUND"})
-    console.log(provider, id)
-    const fetchedData = await fetch(`https://vidsrc.xyz/embed/${type}?${provider}mdb=${id}`)
-    const data = fetchedData.body;
-    console.log(JSON.parse(data as unknown as string))
-    res.status(200).json({ message: "GET Request" })
+router.get('/movies', async function(_, res){
+    const response = await axios({
+        method: 'GET',
+        url: 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${process.env.ACCESS_TOKEN_TMDB}`
+        }
+    });
+    res.status(200).json({ data: response.data.results })
 });
 
 export default router
