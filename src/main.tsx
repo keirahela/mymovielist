@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
         <Routes>
             <Route index element={<App />} />
-            <Route path="player" element={<Player />} />
+            <Route path="player/:id" element={<Player />} />
             <Route path='*' element={<App />} />
         </Routes>
       </BrowserRouter>

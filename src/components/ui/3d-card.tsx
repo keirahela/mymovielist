@@ -48,7 +48,7 @@ export const CardContainer = ({
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
         className={cn(
-          "py-20 flex items-center justify-center",
+          "py-20 flex flex-col items-center justify-center",
           containerClassName
         )}
         style={{
@@ -76,9 +76,11 @@ export const CardContainer = ({
 };
  
 export const CardBody = ({
+  props,
   children,
   className,
 }: {
+  props: any;
   children: React.ReactNode;
   className?: string;
 }) => {
@@ -88,6 +90,14 @@ export const CardBody = ({
         "h-96 w-96 [transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]",
         className
       )}
+
+      style={{
+        backgroundImage: `url(${props.backgroundImage})`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "100% 100%"
+      }}
+      onClick={e => props.onClick()}
     >
       {children}
     </div>
