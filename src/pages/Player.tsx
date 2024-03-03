@@ -7,14 +7,13 @@ import { ThemeProvider } from "@/components/theme-provider";
 import axios from "axios";
 import Image from '@/components/ui/image'
 import './style/Player.css'
-import { MovieData } from "@/server/interfaces/Request";
 
 
 function Player() {
     const { t } = useTranslation();
     const { id } = useParams();
-    const Theme = localStorage.getItem('vite-ui-theme')
     const [movieData, setMovieData] = useState([])
+    const [isSpecial, setIsSpecial] = useState(false)
     const navigate = useNavigate();
 
     const getDetails = useMemo(() => async () => {
@@ -49,6 +48,11 @@ function Player() {
       if(Number.isNaN(Number(id))) navigate('/')
 
       getDetails();
+
+      const num = Math.floor(Math.random() * (10000 - 1 + 1) ) + 1;
+      if(num === 1) {
+        setIsSpecial(true)
+      }
     }, [navigate])
 
     return (
@@ -64,7 +68,21 @@ function Player() {
       </div>
       </header> */}
       <div className="flex justify-center text-center flex-col">
-          <iframe height={392} width={698} allowFullScreen={true} frameBorder={0} src={`https://vidsrc.xyz/embed/movie?tmdb=${id}&sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt&ds_langs=en,de`} />
+          {isSpecial && 
+            <div className="flex items-center justify-center flex-col">
+            <Image
+              src={`https://cdn.discordapp.com/attachments/1192222383067627731/1213625647272824932/8_663408582.jpeg?ex=65f627f6&is=65e3b2f6&hm=9df6d7a844747af896c9e40476fcd1aaedb52e708a89ddb2957323895131b25f&`}
+              alt="sectionimage"
+              className="w-96 h-96 object-fill"
+            />
+            <h1 className="pb-5">
+              <em>Well, if getting lost in dreams about me is a problem, I suggest you invest in a better GPS...</em>
+              <br></br>
+              <em>or maybe just set your coordinates to "Reality" next time!</em> - <strong>Guardian</strong>
+            </h1>
+            </div>
+          }
+          <iframe height={392} width={698} allowFullScreen={true} frameBorder={0} src={`https://vidsrc.xyz/embed/movie?tmdb=${id}&sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt`} />
           <h1 className="pt-6 font-bold uppercase">{t("HOSTED_ELSEWHERE")}</h1>
           <ModeToggle />
       </div>
