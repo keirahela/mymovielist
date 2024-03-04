@@ -35,15 +35,15 @@ function Player() {
     }, [id])
 
     useEffect(() => {
-        // if (devtools.isOpen) {
-        //     navigate('/')
-        // }
+        if (devtools.isOpen) {
+            navigate('/')
+        }
 
-        // window.addEventListener('devtoolschange', event => {
-        //   if (event.detail.isOpen) {
-        //     navigate('/')
-        //   }
-        // });
+        window.addEventListener('devtoolschange', event => {
+          if (event.detail.isOpen) {
+            navigate('/')
+          }
+        });
 
       if(Number.isNaN(Number(id))) navigate('/')
 
