@@ -30,6 +30,7 @@ router.get('/movies/details/:id', async function(req, res){
 });
 
 router.get('/movies', async function(_, res){
+  if(!process.env.ACCESS_TOKEN_TMDB) return res.status(404).json({ message: 'TMDB ACCESS TOKEN NOT FOUND IN ENV'})
     try {
       const response = await axios({
         method: 'GET',
