@@ -22,7 +22,7 @@ export function Card({ ...props }) {
   return (
     <CardContainer className="inter-var px-2 place-content-center">
       <CardBody props={{backgroundImage: props.thumbnail || 'https://via.placeholder.com/1000', onClick: () => { window.open(`/player/${props.id}`); }}} className={`
-      bg-gray-50 relative group/card dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-red-500/[0.3] dark:border-white/[0.2]
+      bg-gray-50 relative group/card dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-blue-500/[0.4] dark:border-white/[0.2]
       border-black/[0.1] w-8/12 sm:w-[30rem] h-96 rounded-xl p-6 border `
       }>
         <div className="flex flex-row flex-wrap-2 order-2 justify-center">

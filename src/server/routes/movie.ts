@@ -3,7 +3,7 @@ import axios from 'axios';
 import dotenv from 'dotenv'
 dotenv.config()
 
-let router = express.Router()
+const router = express.Router()
 
 router.get('/movies/details/:id', async function(req, res){
   const { id } = req.params
