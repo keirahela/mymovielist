@@ -6,13 +6,14 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { ThemeProvider } from "@/components/theme-provider";
 import axios from "axios";
 import Image from '@/components/ui/image'
+import { MovieData } from "@/server/interfaces/Movie";
 import './style/Player.css'
 
 
 function Player() {
     const { t } = useTranslation();
     const { id } = useParams();
-    const [movieData, setMovieData] = useState([])
+    const [movieData, setMovieData] = useState<MovieData | null>(null)
     const [isSpecial, setIsSpecial] = useState(false)
     const navigate = useNavigate();
 
@@ -25,7 +26,7 @@ function Player() {
             Accept: 'application/json',
           }
         })
-        const data = response.data
+        const data: MovieData = response.data
         console.log(data)
         setMovieData(data)
       }
@@ -35,15 +36,15 @@ function Player() {
     }, [id])
 
     useEffect(() => {
-        if (devtools.isOpen) {
-            navigate('/')
-        }
+        // if (devtools.isOpen) {
+        //     navigate('/')
+        // }
 
-        window.addEventListener('devtoolschange', event => {
-          if (event.detail.isOpen) {
-            navigate('/')
-          }
-        });
+        // window.addEventListener('devtoolschange', event => {
+        //   if (event.detail.isOpen) {
+        //     navigate('/')
+        //   }
+        // });
 
       if(Number.isNaN(Number(id))) navigate('/')
 
@@ -67,7 +68,7 @@ function Player() {
         <div className={`absolute inset-0 bg-gradient-to-b from-[#FF000000] to-[#ffffff]`} />
       </div>
       </header> */}
-      <div className="flex justify-center text-center flex-col">
+      <div className="flex justify-center text-center flex-col items-center">
           {isSpecial && 
             <div className="flex items-center justify-center flex-col">
             <Image
@@ -82,6 +83,16 @@ function Player() {
             </h1>
             </div>
           }
+          <h1>
+            <strong>{(movieData as MovieData)?.title}</strong>
+            <br></br>
+            <strong>{(movieData as MovieData)?.rating ? (movieData as MovieData)?.rating.toFixed(1) : "N/A"}</strong> <b style={{color: "gold"}}>★</b>
+          </h1>
+          <div className="flex flex-row flex-wrap">
+            <p className="text-sm text-neutral-500 dark:text-neutral-300">
+              {(movieData as MovieData)?.description}
+            </p>
+          </div>
           <iframe height={392} width={698} allowFullScreen={true} frameBorder={0} src={`https://vidsrc.xyz/embed/movie?tmdb=${id}&sub_url=https%3A%2F%2Fvidsrc.me%2Fsample.srt`} />
           <h1 className="pt-6 font-bold uppercase">{t("HOSTED_ELSEWHERE")}</h1>
           <ModeToggle />

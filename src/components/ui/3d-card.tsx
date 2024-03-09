@@ -34,12 +34,12 @@ export const CardContainer = ({
     containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
   };
  
-  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseEnter = (_: React.MouseEvent<HTMLDivElement>) => {
     setIsMouseEntered(true);
     if (!containerRef.current) return;
   };
  
-  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseLeave = (_: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
     setIsMouseEntered(false);
     containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
@@ -92,12 +92,12 @@ export const CardBody = ({
       )}
 
       style={{
-        backgroundImage: `url(${props.backgroundImage})`,
+        backgroundImage: `url(${props.backgroundImage || "https://via.placeholder.com/1000"})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "100% 100%"
       }}
-      onClick={e => props.onClick()}
+      onClick={_ => props.onClick()}
     >
       {children}
     </div>

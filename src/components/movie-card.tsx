@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "@/components/ui/image";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import { useTranslation } from "react-i18next";
 
 const CUTTING_EXPRESSION = /\s+[^\s]*$/;
 
@@ -18,7 +16,6 @@ const createShortcut = (text: string, limit: number) => {
 };
  
 export function Card({ ...props }) {
-    const { t } = useTranslation();
   return (
     <CardContainer className="inter-var px-2 place-content-center">
       <CardBody props={{backgroundImage: props.thumbnail || 'https://via.placeholder.com/1000', onClick: () => { window.open(`/player/${props.id}`); }}} className={`
