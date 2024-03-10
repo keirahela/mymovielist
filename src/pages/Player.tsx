@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
-import devtools from 'devtools-detect';
 import { useEffect, useMemo, useState } from "react";
 import { ModeToggle } from "@/components/mode-toggle";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -33,7 +33,7 @@ function Player() {
       catch (error: any) {
         (error.request.status === 500 || error.request.status === 404) && navigate('/')
       }
-    }, [id])
+    }, [id, navigate])
 
     useEffect(() => {
         // if (devtools.isOpen) {
@@ -54,7 +54,7 @@ function Player() {
       if(num === 1) {
         setIsSpecial(true)
       }
-    }, [navigate])
+    }, [getDetails, id, navigate])
 
     return (
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">

@@ -1,4 +1,5 @@
 module.exports = {
+
   root: true,
   env: { browser: true, es2020: true },
   extends: [
@@ -14,5 +15,8 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-explicit-any': 'off'
   },
+
 }
