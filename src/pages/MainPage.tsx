@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Card } from '../components/movie-card'
 import { useState, useMemo, useEffect, Key } from 'react';
 import axios from 'axios';

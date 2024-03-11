@@ -1,0 +1,42 @@
+.discord-button {
+    position: relative;
+    overflow: hidden;
+    background-color: #7289da;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .discord-button:hover {
+    background-color: #677bc4;
+  }
+  
+  .discord-button span {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .discord-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    fill: #fff;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .discord-button:hover .discord-icon {
+    opacity: 1;
+  }
+
+  .discord-button:hover span {
+    opacity: 0;
+  }
+  

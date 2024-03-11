@@ -6,8 +6,23 @@ import { LanguageSelector } from '../components/language-selector';
 import translations from '../../translations.json'
 import { DropdownMenuRadioItem } from '../components/ui/dropdown-menu';
 import MainPage from './MainPage';
+import { useState, useEffect } from 'react';
+import LoginPage from './login';
 
 function App() {
+    const [hasCookies, setHasCookies] = useState(false);
+
+    useEffect(() => {
+      const checkCookies = () => {
+        const cookiesNeeded = document.cookie
+        if(cookiesNeeded.indexOf('userData=') > -1) {
+            setHasCookies(true)
+        } else {
+            setHasCookies(false)
+        }
+      };
+      checkCookies()
+    })
   const { t, i18n } = useTranslation();
 
   return (
@@ -23,7 +38,7 @@ function App() {
         ))}>
         </LanguageSelector>
         <div className='flex flex-row items-center justify-center'>
-          <MainPage />
+            {hasCookies ? <MainPage /> : <LoginPage />}
         </div>
         <ModeToggle />
       </ThemeProvider>

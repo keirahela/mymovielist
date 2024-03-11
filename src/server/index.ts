@@ -2,13 +2,14 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import movieRoutes from './routes/movie'
-
+import loginRoute from "./routes/login"
 export const app = express();
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/api', movieRoutes)
+app.use('/api', loginRoute)
 
 if (!process.env['VITE']) {
     const frontendFiles = process.cwd() + '/dist'
