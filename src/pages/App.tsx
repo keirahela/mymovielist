@@ -38,9 +38,11 @@ function App() {
         ))}>
         </LanguageSelector>
         <div className='flex flex-row items-center justify-center'>
-            {hasCookies ? <MainPage /> : <LoginPage />}
+          {hasCookies ? <MainPage /> : <LoginPage />}
         </div>
-        <ModeToggle />
+        <div className='flex items-center justify-center'>
+          <ModeToggle />
+        </div>
       </ThemeProvider>
     </>
   )
