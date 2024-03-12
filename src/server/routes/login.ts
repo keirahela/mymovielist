@@ -10,7 +10,7 @@ router.get('/discord/callback', async (req, res) => {
     if ( code ) {
         const params = new URLSearchParams({
             "client_id": '1125638027100831754',
-            "client_secret": 'r_k905RHlwHgaA5CXr9R8k46pLd-wj3n',
+            "client_secret": process.env.CLIENT_SECRET as string,
             "grant_type": "authorization_code",
             "code": code as string,
             "redirect_uri": 'http://localhost:5173/api/discord/callback'
